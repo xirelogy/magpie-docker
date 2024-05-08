@@ -48,6 +48,9 @@ RUN apk update \
 
 RUN ln -sf /usr/bin/php81 /usr/bin/php
 
+# Harden the PHP installation
+RUN echo "expose_php = Off" >> /etc/php81/php.ini
+
 # Make composer available
 ADD https://getcomposer.org/download/latest-stable/composer.phar /usr/local/bin/composer.phar
 RUN chmod +x /usr/local/bin/composer.phar
