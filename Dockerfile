@@ -35,6 +35,7 @@ RUN apk update \
     php81-pdo_sqlite \
     php81-pecl-redis \
     php81-phar \
+    php81-simplexml \
     php81-tokenizer \
     php81-xml \
     php81-xmlreader \
