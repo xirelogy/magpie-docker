@@ -5,7 +5,7 @@ openrc
 touch /run/openrc/softlevel
 
 # Start the services
-/etc/init.d/php-fpm81 start
+/etc/init.d/php-fpm85 start
 /etc/init.d/nginx start
 
 if [ "$MAGPIE_RUN_BACKGROUND" == "1" ]; then
@@ -21,7 +21,7 @@ term_handler()
     /etc/init.d/supervisord stop
   fi
   /etc/init.d/nginx stop
-  /etc/init.d/php-fpm81 stop
+  /etc/init.d/php-fpm85 stop
   
   echo "All done, goodbye"
   exit 0
