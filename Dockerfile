@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.24
 
 # Work directory
 WORKDIR /app
@@ -19,38 +19,38 @@ RUN set -xe \
 # Install necessary packages
 RUN apk update \
   && apk add --no-cache \
-    php81 \
-    php81-fpm \
-    php81-ctype \
-    php81-curl \
-    php81-dom \
-    php81-fileinfo \
-    php81-gd \
-    php81-iconv \
-    php81-mbstring \
-    php81-openssl \
-    php81-pcntl \
-    php81-pdo \
-    php81-pdo_mysql \
-    php81-pdo_sqlite \
-    php81-pecl-redis \
-    php81-phar \
-    php81-simplexml \
-    php81-tokenizer \
-    php81-xml \
-    php81-xmlreader \
-    php81-xmlwriter \
-    php81-zip \
+    php85 \
+    php85-fpm \
+    php85-ctype \
+    php85-curl \
+    php85-dom \
+    php85-fileinfo \
+    php85-gd \
+    php85-iconv \
+    php85-mbstring \
+    php85-openssl \
+    php85-pcntl \
+    php85-pdo \
+    php85-pdo_mysql \
+    php85-pdo_sqlite \
+    php85-pecl-redis \
+    php85-phar \
+    php85-simplexml \
+    php85-tokenizer \
+    php85-xml \
+    php85-xmlreader \
+    php85-xmlwriter \
+    php85-zip \
     bash \
     nginx \
     openrc \
     supervisor \
     tzdata
 
-RUN ln -sf /usr/bin/php81 /usr/bin/php
+RUN ln -sf /usr/bin/php85 /usr/bin/php
 
 # Harden the PHP installation
-RUN echo "expose_php = Off" >> /etc/php81/php.ini
+RUN echo "expose_php = Off" >> /etc/php85/php.ini
 
 # Make composer available
 ADD https://getcomposer.org/download/latest-stable/composer.phar /usr/local/bin/composer.phar
@@ -71,7 +71,7 @@ CMD [ "/docker-entrypoint.sh" ]
 RUN set -xe \
   && ln -sf /dev/stdout /var/log/nginx/access.log \
   && ln -sf /dev/stderr /var/log/nginx/error.log \
-  && ln -sf /dev/stderr /var/log/php81/error.log
+  && ln -sf /dev/stderr /var/log/php85/error.log
 
 # Setup web entrance
 ADD res/nginx/default.conf /etc/nginx/http.d/default.conf
