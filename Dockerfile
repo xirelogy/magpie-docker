@@ -52,6 +52,9 @@ RUN ln -sf /usr/bin/php85 /usr/bin/php
 # Harden the PHP installation
 RUN echo "expose_php = Off" >> /etc/php85/php.ini
 
+# Mitigation for CVE-2026-109619 / CVE-2026-115560
+RUN echo "session.upload_progress.enabled = 0" >> /etc/php85/php.ini
+
 # Make composer available
 ADD https://getcomposer.org/download/latest-stable/composer.phar /usr/local/bin/composer.phar
 RUN chmod +x /usr/local/bin/composer.phar
