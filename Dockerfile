@@ -16,6 +16,9 @@ RUN set -xe \
   && echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> /home/magpie/.bashrc \
   && echo "alias ll='ls -alF'" >> /home/magpie/.bashrc
 
+# Set the build stamp
+ADD .touch /etc/BUILT
+
 # Install necessary packages
 RUN apk update \
   && apk add --no-cache \
